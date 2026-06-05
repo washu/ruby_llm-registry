@@ -4,7 +4,7 @@ require_relative "lib/ruby_llm/registry/version"
 
 Gem::Specification.new do |spec|
   spec.name = "ruby_llm-registry"
-  spec.version = RubyLlm::Registry::VERSION
+  spec.version = RubyLLM::Registry::VERSION
   spec.authors = ["Sal Scotto"]
   spec.email = ["sal.scotto@gmail.com"]
 
