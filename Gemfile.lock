@@ -143,7 +143,7 @@ GEM
     uri (1.1.1)
 
 PLATFORMS
-  arm64-darwin-23
+  ruby
 
 DEPENDENCIES
   activerecord
