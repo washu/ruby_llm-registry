@@ -2,7 +2,7 @@
 
 require "erb"
 
-module RubyLlm
+module RubyLLM
   module Registry
     # Represents a loaded prompt template plus its metadata.
     class Prompt

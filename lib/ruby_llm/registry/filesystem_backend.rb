@@ -3,7 +3,7 @@
 require "pathname"
 require "yaml"
 
-module RubyLlm
+module RubyLLM
   module Registry
     # Filesystem-backed registry adapter.
     class FilesystemBackend

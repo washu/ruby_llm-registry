@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module RubyLlm
+module RubyLLM
   module Registry
     # Context object used while rendering ERB prompts.
     class RenderContext

@@ -3,7 +3,7 @@
 require "json"
 require "yaml"
 
-module RubyLlm
+module RubyLLM
   module Registry
     # Serializes prompt objects into portable formats.
     class Exporter

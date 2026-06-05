@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module RubyLlm
+module RubyLLM
   module Registry
     class Error < StandardError; end
     class PromptNotFoundError < Error; end

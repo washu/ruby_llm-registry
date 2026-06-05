@@ -6,7 +6,7 @@ require_relative "adapters/active_record"
 require_relative "adapters/mongo"
 require_relative "adapters/s3"
 
-module RubyLlm
+module RubyLLM
   module Registry
     module Adapters
       module_function

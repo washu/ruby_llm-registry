@@ -3,7 +3,7 @@
 require "date"
 require "yaml"
 
-module RubyLlm
+module RubyLLM
   module Registry
     # Simple YAML front matter parser for prompt files.
     module FrontMatter

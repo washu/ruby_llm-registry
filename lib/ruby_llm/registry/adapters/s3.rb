@@ -2,7 +2,7 @@
 
 require "json"
 
-module RubyLlm
+module RubyLLM
   module Registry
     module Adapters
       # S3-backed prompt repository.

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module RubyLlm
+module RubyLLM
   module Registry
     # Represents a comparison between two prompt revisions.
     class Comparison

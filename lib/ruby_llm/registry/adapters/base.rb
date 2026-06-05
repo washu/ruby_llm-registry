@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module RubyLlm
+module RubyLLM
   module Registry
     module Adapters
       # Shared adapter behavior for prompt storage backends.

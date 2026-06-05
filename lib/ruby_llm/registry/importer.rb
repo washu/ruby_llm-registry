@@ -4,7 +4,7 @@ require "date"
 require "json"
 require "yaml"
 
-module RubyLlm
+module RubyLLM
   module Registry
     # Deserializes prompt exports into Prompt objects.
     class Importer

@@ -3,7 +3,7 @@
 require "json"
 require "time"
 
-module RubyLlm
+module RubyLLM
   module Registry
     module Adapters
       # SQLite-backed prompt repository.

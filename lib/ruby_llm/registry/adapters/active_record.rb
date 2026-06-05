@@ -2,7 +2,7 @@
 
 require "json"
 
-module RubyLlm
+module RubyLLM
   module Registry
     module Adapters
       # ActiveRecord-backed prompt repository.

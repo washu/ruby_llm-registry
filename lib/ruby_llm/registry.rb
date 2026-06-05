@@ -12,7 +12,7 @@ require_relative "registry/importer"
 require_relative "registry/adapters"
 require_relative "registry/filesystem_backend"
 
-module RubyLlm
+module RubyLLM
   module Registry
     class Configuration
       attr_accessor :root, :manifest_path, :default_adapter, :default_database_adapter

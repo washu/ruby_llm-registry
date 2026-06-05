@@ -12,49 +12,50 @@
     <orderEntry type="jdk" jdkName="rbenv: 3.4.9" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="activemodel (v8.1.3, rbenv: 3.4.9) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="activerecord (v8.1.3, rbenv: 3.4.9) [gem]" level="application" />
+    <orderEntry type="library" scope="TEST" name="activerecord (v8.1.3, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v8.1.3, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ast (v2.4.3, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="aws-eventstream (v1.4.0, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="aws-partitions (v1.1257.0, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="aws-sdk-core (v3.251.0, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="aws-sdk-kms (v1.129.0, rbenv: 3.4.9) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="aws-sdk-s3 (v1.225.0, rbenv: 3.4.9) [gem]" level="application" />
+    <orderEntry type="library" scope="TEST" name="aws-sdk-s3 (v1.225.0, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="aws-sigv4 (v1.12.1, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="base64 (v0.3.0, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bigdecimal (v4.1.2, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bson (v5.2.0, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v2.6.9, rbenv: 3.4.9) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="cgi (v0.4.2, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="concurrent-ruby (v1.3.6, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="connection_pool (v3.0.2, rbenv: 3.4.9) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="date (v3.4.1, rbenv: 3.4.9) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="date (v3.5.1, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.6.2, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="docile (v1.4.1, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="drb (v2.2.3, rbenv: 3.4.9) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="erb (v4.0.4, rbenv: 3.4.9) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="erb (v6.0.4, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.14.8, rbenv: 3.4.9) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="io-console (v0.8.1, rbenv: 3.4.9) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="irb (v1.14.3, rbenv: 3.4.9) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="io-console (v0.8.2, rbenv: 3.4.9) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="irb (v1.18.0, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jmespath (v1.6.2, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json (v2.19.8, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="language_server-protocol (v3.17.0.5, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="lint_roller (v1.1.0, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="logger (v1.7.0, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v6.0.6, rbenv: 3.4.9) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="mongo (v2.24.1, rbenv: 3.4.9) [gem]" level="application" />
+    <orderEntry type="library" scope="TEST" name="mongo (v2.24.1, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="parallel (v2.1.0, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="parser (v3.3.11.1, rbenv: 3.4.9) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pp (v0.6.3, rbenv: 3.4.9) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="prettyprint (v0.2.0, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="prism (v1.9.0, rbenv: 3.4.9) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="psych (v5.2.2, rbenv: 3.4.9) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="psych (v5.4.0, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="racc (v1.8.1, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rainbow (v3.1.1, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v13.4.2, rbenv: 3.4.9) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rdoc (v6.14.0, rbenv: 3.4.9) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rdoc (v7.2.0, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="regexp_parser (v2.12.0, rbenv: 3.4.9) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="reline (v0.6.0, rbenv: 3.4.9) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rexml (v3.4.4, rbenv: 3.4.9) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rspec (v3.13.2, rbenv: 3.4.9) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="reline (v0.6.3, rbenv: 3.4.9) [gem]" level="application" />
+    <orderEntry type="library" scope="TEST" name="rexml (v3.4.4, rbenv: 3.4.9) [gem]" level="application" />
+    <orderEntry type="library" scope="TEST" name="rspec (v3.13.2, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-core (v3.13.6, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-expectations (v3.13.5, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-mocks (v3.13.8, rbenv: 3.4.9) [gem]" level="application" />
@@ -63,12 +64,13 @@
     <orderEntry type="library" scope="PROVIDED" name="rubocop-ast (v1.49.1, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.13.0, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="securerandom (v0.4.1, rbenv: 3.4.9) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="simplecov (v0.22.0, rbenv: 3.4.9) [gem]" level="application" />
+    <orderEntry type="library" scope="TEST" name="simplecov (v0.22.0, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="simplecov-html (v0.13.2, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="simplecov_json_formatter (v0.1.4, rbenv: 3.4.9) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v2.9.4, rbenv: 3.4.9) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="stringio (v3.1.2, rbenv: 3.4.9) [gem]" level="application" />
+    <orderEntry type="library" scope="TEST" name="sqlite3 (v2.9.4, rbenv: 3.4.9) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="stringio (v3.2.0, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="timeout (v0.6.1, rbenv: 3.4.9) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tsort (v0.2.0, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v2.0.6, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="unicode-display_width (v3.2.0, rbenv: 3.4.9) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="unicode-emoji (v4.2.0, rbenv: 3.4.9) [gem]" level="application" />
