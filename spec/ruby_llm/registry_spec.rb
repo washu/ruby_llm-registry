@@ -3,7 +3,7 @@
 require "fileutils"
 require "tmpdir"
 
-RSpec.describe RubyLlm::Registry do
+RSpec.describe RubyLLM::Registry do
   around do |example|
     described_class.reset!
     example.run
@@ -12,7 +12,7 @@ RSpec.describe RubyLlm::Registry do
   end
 
   it "has a version number" do
-    expect(RubyLlm::Registry::VERSION).not_to be nil
+    expect(RubyLLM::Registry::VERSION).not_to be nil
   end
 
   it "exports and imports prompts across formats" do
@@ -153,7 +153,7 @@ RSpec.describe RubyLlm::Registry do
 
       prompt = described_class.get("email/summarizer", version: "1.0.0", root: File.join(dir, "prompts"))
 
-      expect { prompt.render }.to raise_error(RubyLlm::Registry::MissingVariableError)
+      expect { prompt.render }.to raise_error(RubyLLM::Registry::MissingVariableError)
     end
   end
 end

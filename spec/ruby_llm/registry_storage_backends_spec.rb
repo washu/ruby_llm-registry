@@ -6,7 +6,7 @@ require "mongo"
 require "logger"
 require "tmpdir"
 
-RSpec.describe "RubyLlm::Registry storage backends" do
+RSpec.describe "RubyLLM::Registry storage backends" do
   include SpecSupport::PromptFixtures
 
   after do
@@ -27,7 +27,7 @@ RSpec.describe "RubyLlm::Registry storage backends" do
 
     it "round-trips a fixture prompt through the importer and exporter" do
       markdown = File.read(prompt_fixture_path("email", "summarizer", "v1.1.0.md"))
-      imported = RubyLlm::Registry.import(markdown, format: :markdown)
+      imported = RubyLLM::Registry.import(markdown, format: :markdown)
 
       expect(imported.version.to_s).to eq("1.1.0")
       expect(imported.export(format: :json)).to include('"version": "1.1.0"')
@@ -37,7 +37,7 @@ RSpec.describe "RubyLlm::Registry storage backends" do
   describe "SQLite backend" do
     it "persists and reloads prompts from a sqlite database" do
       Dir.mktmpdir do |dir|
-        backend = RubyLlm::Registry.database_backend(:sqlite, path: File.join(dir, "prompts.db"))
+        backend = RubyLLM::Registry.database_backend(:sqlite, path: File.join(dir, "prompts.db"))
         prompt = load_prompt_fixture(version: "1.1.0")
 
         backend.store(prompt)
@@ -52,7 +52,7 @@ RSpec.describe "RubyLlm::Registry storage backends" do
   describe "ActiveRecord backend" do
     it "uses the same prompt model through ActiveRecord" do
       ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: ":memory:")
-      backend = RubyLlm::Registry.database_backend(:active_record)
+      backend = RubyLLM::Registry.database_backend(:active_record)
       prompt = load_prompt_fixture(version: "1.0.0")
 
       backend.store(prompt)
@@ -108,7 +108,7 @@ RSpec.describe "RubyLlm::Registry storage backends" do
       begin
         collection = client[:prompts]
         collection.delete_many
-        backend = RubyLlm::Registry.backend(:mongo, collection: collection)
+        backend = RubyLLM::Registry.backend(:mongo, collection: collection)
         prompt = load_prompt_fixture(version: "1.1.0")
 
         backend.store(prompt)
@@ -166,7 +166,7 @@ RSpec.describe "RubyLlm::Registry storage backends" do
       )
       bucket = "ruby-llm-registry-test"
       client.create_bucket(bucket: bucket)
-      backend = RubyLlm::Registry.backend(:s3, client: client, bucket: bucket)
+      backend = RubyLLM::Registry.backend(:s3, client: client, bucket: bucket)
       prompt = load_prompt_fixture(version: "1.1.0")
 
       backend.store(prompt)

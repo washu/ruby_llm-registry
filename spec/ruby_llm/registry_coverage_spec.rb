@@ -4,7 +4,7 @@ require "json"
 require "tmpdir"
 require "fileutils"
 
-RSpec.describe "RubyLlm::Registry coverage helpers" do
+RSpec.describe "RubyLLM::Registry coverage helpers" do
   include SpecSupport::PromptFixtures
 
   it "covers registry configuration, backend selection, export, import, and diff helpers" do
@@ -27,25 +27,25 @@ RSpec.describe "RubyLlm::Registry coverage helpers" do
       )
 
       Dir.chdir(dir) do
-        RubyLlm::Registry.reset!
-        RubyLlm::Registry.configure do |config|
+        RubyLLM::Registry.reset!
+        RubyLLM::Registry.configure do |config|
           config.root = nil
           config.manifest_path = nil
           config.default_adapter = :filesystem
           config.default_database_adapter = :sqlite
         end
 
-        filesystem_backend = RubyLlm::Registry.backend
-        expect(filesystem_backend).to be_a(RubyLlm::Registry::FilesystemBackend)
+        filesystem_backend = RubyLLM::Registry.backend
+        expect(filesystem_backend).to be_a(RubyLLM::Registry::FilesystemBackend)
 
-        sqlite_backend = RubyLlm::Registry.database_backend(path: File.join(dir, "prompts.db"))
-        expect(sqlite_backend).to be_a(RubyLlm::Registry::Adapters::SQLite)
+        sqlite_backend = RubyLLM::Registry.database_backend(path: File.join(dir, "prompts.db"))
+        expect(sqlite_backend).to be_a(RubyLLM::Registry::Adapters::SQLite)
 
-        prompt = RubyLlm::Registry.get("email/summarizer")
-        expect(RubyLlm::Registry.export(prompt, format: :hash)).to include(:body, :version)
-        expect(RubyLlm::Registry.export(prompt, format: :json)).to include('"version": "1.0.0"')
-        expect(RubyLlm::Registry.export("email/summarizer", root: prompts_root, format: :markdown)).to include("Hello <%= user_name %>")
-        expect(RubyLlm::Registry.export("email/summarizer", backend: filesystem_backend, format: :yaml)).to include("version: 1.0.0")
+        prompt = RubyLLM::Registry.get("email/summarizer")
+        expect(RubyLLM::Registry.export(prompt, format: :hash)).to include(:body, :version)
+        expect(RubyLLM::Registry.export(prompt, format: :json)).to include('"version": "1.0.0"')
+        expect(RubyLLM::Registry.export("email/summarizer", root: prompts_root, format: :markdown)).to include("Hello <%= user_name %>")
+        expect(RubyLLM::Registry.export("email/summarizer", backend: filesystem_backend, format: :yaml)).to include("version: 1.0.0")
 
         imported_backend = Class.new do
           attr_reader :stored
@@ -59,25 +59,25 @@ RSpec.describe "RubyLlm::Registry coverage helpers" do
           end
         end.new
 
-        imported = RubyLlm::Registry.import(prompt.export(format: :markdown), backend: imported_backend)
+        imported = RubyLLM::Registry.import(prompt.export(format: :markdown), backend: imported_backend)
         expect(imported_backend.stored.version.to_s).to eq("1.0.0")
         expect(imported.version.to_s).to eq("1.0.0")
 
-        diff = RubyLlm::Registry.diff(prompt.export(format: :markdown), prompt.export(format: :markdown))
+        diff = RubyLLM::Registry.diff(prompt.export(format: :markdown), prompt.export(format: :markdown))
         expect(diff.changed?).to be(false)
         expect(diff.to_s).to eq("No changes")
         expect(diff.to_h[:left]).to be_a(Hash)
 
-        expect { RubyLlm::Registry.backend(:unknown) }.to raise_error(ArgumentError, /Unknown backend type/)
-        expect { RubyLlm::Registry.export(prompt, format: :bogus) }.to raise_error(ArgumentError, /Unsupported export format/)
+        expect { RubyLLM::Registry.backend(:unknown) }.to raise_error(ArgumentError, /Unknown backend type/)
+        expect { RubyLLM::Registry.export(prompt, format: :bogus) }.to raise_error(ArgumentError, /Unsupported export format/)
       end
     end
   ensure
-    RubyLlm::Registry.reset!
+    RubyLLM::Registry.reset!
   end
 
   it "covers importer format inference and path splitting" do
-    hash_prompt = RubyLlm::Registry::Importer.new(
+    hash_prompt = RubyLLM::Registry::Importer.new(
       {
         name: "summarizer",
         namespace: "email",
@@ -90,18 +90,18 @@ RSpec.describe "RubyLlm::Registry coverage helpers" do
       format: :hash
     ).to_prompt
 
-    hash_inferred_prompt = RubyLlm::Registry::Importer.new(
+    hash_inferred_prompt = RubyLLM::Registry::Importer.new(
       { body: "Inferred body" },
       format: :bogus,
       path: "research"
     ).to_prompt
 
-    json_prompt = RubyLlm::Registry::Importer.new(
+    json_prompt = RubyLLM::Registry::Importer.new(
       '  {"name":"summarizer","namespace":"email","version":"2.1.0","body":"Body"}',
       format: :bogus
     ).to_prompt
 
-    yaml_prompt = RubyLlm::Registry::Importer.new(
+    yaml_prompt = RubyLLM::Registry::Importer.new(
       <<~YAML,
         ---
         name: summarizer
@@ -113,7 +113,7 @@ RSpec.describe "RubyLlm::Registry coverage helpers" do
       format: :bogus
     ).to_prompt
 
-    plain_yaml_prompt = RubyLlm::Registry::Importer.new(
+    plain_yaml_prompt = RubyLLM::Registry::Importer.new(
       <<~YAML,
         name: summarizer
         namespace: docs
@@ -123,7 +123,7 @@ RSpec.describe "RubyLlm::Registry coverage helpers" do
       format: :bogus
     ).to_prompt
 
-    markdown_prompt = RubyLlm::Registry::Importer.new(
+    markdown_prompt = RubyLLM::Registry::Importer.new(
       <<~MD,
         ---
         version: 2.3.0
@@ -139,7 +139,7 @@ RSpec.describe "RubyLlm::Registry coverage helpers" do
       path: "email/summarizer"
     ).to_prompt
 
-    path_prompt = RubyLlm::Registry::Importer.new(
+    path_prompt = RubyLLM::Registry::Importer.new(
       { body: "Path body" },
       format: :hash,
       path: "research"
@@ -182,7 +182,7 @@ RSpec.describe "RubyLlm::Registry coverage helpers" do
       )
     end.to raise_error(ArgumentError, /Pass either a context hash or keyword arguments/)
     expect(prompt.export(format: :hash)).to include(:path, :body)
-    expect(prompt.diff(prompt.export(format: :markdown))).to be_a(RubyLlm::Registry::Comparison)
+    expect(prompt.diff(prompt.export(format: :markdown))).to be_a(RubyLLM::Registry::Comparison)
 
     comparison = prompt.diff(other)
     expect(comparison.changed?).to be(true)
@@ -190,26 +190,26 @@ RSpec.describe "RubyLlm::Registry coverage helpers" do
     expect(comparison.to_s).to include("version:")
     expect(comparison.to_h[:right]).to be_a(Hash)
 
-    same = RubyLlm::Registry::Comparison.new(prompt, prompt)
+    same = RubyLLM::Registry::Comparison.new(prompt, prompt)
     expect(same.to_s).to eq("No changes")
 
-    stable = RubyLlm::Registry::Version.parse("1.2.3")
-    prerelease = RubyLlm::Registry::Version.parse("1.2.3-beta.1")
+    stable = RubyLLM::Registry::Version.parse("1.2.3")
+    prerelease = RubyLLM::Registry::Version.parse("1.2.3-beta.1")
     expect(stable.stable?).to be(true)
     expect(prerelease.stable?).to be(false)
-    expect(stable.inspect).to include("RubyLlm::Registry::Version 1.2.3")
+    expect(stable.inspect).to include("RubyLLM::Registry::Version 1.2.3")
     expect(prerelease < stable).to be(true)
 
-    context = RubyLlm::Registry::RenderContext.new(user_name: "Ava")
+    context = RubyLLM::Registry::RenderContext.new(user_name: "Ava")
     expect(context.respond_to?(:user_name)).to be(true)
     expect(context.respond_to?(:missing)).to be(false)
     expect(context.current_date).to be_a(Date)
     expect(context.current_time).to be_a(Time)
     expect { context.user_name("unexpected") }.to raise_error(NoMethodError)
 
-    raw = RubyLlm::Registry::FrontMatter.parse("plain text")
-    invalid = RubyLlm::Registry::FrontMatter.parse("---\nversion: [broken\n---\nbody\n")
-    valid = RubyLlm::Registry::FrontMatter.parse(
+    raw = RubyLLM::Registry::FrontMatter.parse("plain text")
+    invalid = RubyLLM::Registry::FrontMatter.parse("---\nversion: [broken\n---\nbody\n")
+    valid = RubyLLM::Registry::FrontMatter.parse(
       <<~MD
         ---
         version: 9.9.9
@@ -228,11 +228,11 @@ RSpec.describe "RubyLlm::Registry coverage helpers" do
   it "covers adapter base behavior and the adapter factory" do
     prompt = load_prompt_fixture(version: "1.1.0")
 
-    expect(RubyLlm::Registry::Adapters::Base.new.available_versions("anything")).to eq([])
-    expect { RubyLlm::Registry::Adapters::Base.new.get("anything") }.to raise_error(NotImplementedError)
-    expect { RubyLlm::Registry::Adapters::Base.new.store(prompt) }.to raise_error(NotImplementedError)
+    expect(RubyLLM::Registry::Adapters::Base.new.available_versions("anything")).to eq([])
+    expect { RubyLLM::Registry::Adapters::Base.new.get("anything") }.to raise_error(NotImplementedError)
+    expect { RubyLLM::Registry::Adapters::Base.new.store(prompt) }.to raise_error(NotImplementedError)
 
-    adapter = Class.new(RubyLlm::Registry::Adapters::Base) do
+    adapter = Class.new(RubyLLM::Registry::Adapters::Base) do
       attr_reader :stored_prompt
 
       def initialize(prompt)
@@ -252,14 +252,14 @@ RSpec.describe "RubyLlm::Registry coverage helpers" do
     expect(adapter.export("ignored", format: :json)).to include('"version": "1.1.0"')
     expect(adapter.export("ignored", format: :yaml)).to include("version: 1.1.0")
     expect(adapter.export("ignored", format: :markdown)).to include("version: 1.1.0")
-    expect(adapter.import(prompt.export(format: :markdown), format: :markdown)).to be_a(RubyLlm::Registry::Prompt)
+    expect(adapter.import(prompt.export(format: :markdown), format: :markdown)).to be_a(RubyLLM::Registry::Prompt)
 
     Dir.mktmpdir do |dir|
-      filesystem = RubyLlm::Registry::Adapters.build(:filesystem, root: dir)
-      expect(filesystem).to be_a(RubyLlm::Registry::FilesystemBackend)
+      filesystem = RubyLLM::Registry::Adapters.build(:filesystem, root: dir)
+      expect(filesystem).to be_a(RubyLLM::Registry::FilesystemBackend)
     end
 
-    expect { RubyLlm::Registry::Adapters.build(:bogus) }.to raise_error(ArgumentError, /Unknown adapter type/)
+    expect { RubyLLM::Registry::Adapters.build(:bogus) }.to raise_error(ArgumentError, /Unknown adapter type/)
   end
 
   it "covers filesystem backend error handling and overwrite flow" do
@@ -270,16 +270,16 @@ RSpec.describe "RubyLlm::Registry coverage helpers" do
       File.write(File.join(prompt_root, "v1.1.0.md"), "---\nversion: 1.1.0\nlabels: [latest]\n---\nSecond\n")
       File.write(File.join(dir, "prompts", "manifest.yml"), "not: [valid\n")
 
-      backend = RubyLlm::Registry::FilesystemBackend.new(root: File.join(dir, "prompts"))
+      backend = RubyLLM::Registry::FilesystemBackend.new(root: File.join(dir, "prompts"))
 
       expect(backend.available_versions("missing/path")).to eq([])
-      expect { backend.get("missing/path") }.to raise_error(RubyLlm::Registry::PromptNotFoundError)
+      expect { backend.get("missing/path") }.to raise_error(RubyLLM::Registry::PromptNotFoundError)
       expect(backend.get("email/summarizer", version: "1.0.0").body.strip).to eq("First")
       expect(backend.available_versions("email/summarizer").map(&:to_s)).to eq(["1.0.0", "1.1.0"])
       expect(backend.get("email/summarizer", label: :latest).version.to_s).to eq("1.1.0")
       expect(backend.get("email/summarizer", label: :"v1.0.0").version.to_s).to eq("1.0.0")
 
-      prompt = RubyLlm::Registry::Prompt.new(
+      prompt = RubyLLM::Registry::Prompt.new(
         name: "summarizer",
         namespace: "email",
         version: "1.2.0",
@@ -290,7 +290,7 @@ RSpec.describe "RubyLlm::Registry coverage helpers" do
         required_vars: []
       )
       backend.store(prompt)
-      expect { backend.store(prompt) }.to raise_error(RubyLlm::Registry::Error)
+      expect { backend.store(prompt) }.to raise_error(RubyLLM::Registry::Error)
       expect { backend.store(prompt, overwrite: true) }.not_to raise_error
     end
   end

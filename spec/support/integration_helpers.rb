@@ -18,7 +18,7 @@ module SpecSupport
     end
 
     def load_prompt_fixture(version: "1.1.0")
-      RubyLlm::Registry.get("email/summarizer", version: version, root: prompt_fixture_root)
+      RubyLLM::Registry.get("email/summarizer", version: version, root: prompt_fixture_root)
     end
   end
 

@@ -1,4 +1,4 @@
-# RubyLlm::Registry
+# RubyLLM::Registry
 
 [![CI](https://github.com/washu/ruby_llm-registry/actions/workflows/ci.yml/badge.svg)](https://github.com/washu/ruby_llm-registry/actions/workflows/ci.yml)
 
@@ -6,7 +6,7 @@ Local-first, versioned prompt storage and rendering for RubyLLM applications.
 
 ## What it does
 
-`RubyLlm::Registry` treats prompts as immutable artifacts stored outside your app code. It can:
+`RubyLLM::Registry` treats prompts as immutable artifacts stored outside your app code. It can:
 
 - load the latest or a specific semantic version
 - resolve labels like `production` or `staging`
@@ -19,7 +19,7 @@ Local-first, versioned prompt storage and rendering for RubyLLM applications.
 ## Quick start
 
 ```ruby
-prompt = RubyLlm::Registry.get("email/summarizer", label: :production)
+prompt = RubyLLM::Registry.get("email/summarizer", label: :production)
 
 rendered = prompt.render(
   user_name: "Ava",
@@ -27,7 +27,7 @@ rendered = prompt.render(
   summary_length: "concise"
 )
 
-diff = RubyLlm::Registry.diff(prompt, prompt.export(format: :markdown))
+diff = RubyLLM::Registry.diff(prompt, prompt.export(format: :markdown))
 puts diff.changed_fields
 ```
 
@@ -36,12 +36,12 @@ puts diff.changed_fields
 The gem stays filesystem-first by default. If you need a different store, opt in explicitly:
 
 ```ruby
-sqlite = RubyLlm::Registry.database_backend(:sqlite, path: "tmp/prompts.db")
+sqlite = RubyLLM::Registry.database_backend(:sqlite, path: "tmp/prompts.db")
 
 # or, when those integrations are available in your app:
-# RubyLlm::Registry.database_backend(:active_record)
-# RubyLlm::Registry.database_backend(:mongo, collection: MyCollection)
-# RubyLlm::Registry.backend(:s3, client: s3_client, bucket: "my-bucket")
+# RubyLLM::Registry.database_backend(:active_record)
+# RubyLLM::Registry.database_backend(:mongo, collection: MyCollection)
+# RubyLLM::Registry.backend(:s3, client: s3_client, bucket: "my-bucket")
 ```
 
 All non-filesystem adapters are loaded lazily, so your app only pulls in the storage stack it actually uses.
